@@ -1,0 +1,17 @@
+# Ignore environment files
+.env
+
+# Ignore Python compiled files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environments
+env/
+.venv/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+#vs-code workspace file
+django_saas.code-workspace
