@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+    {{ page_title}} - {{ block.super }}
+{% endblock head_title %}
+
+{% block content %}
+    <h1>Hello World inside block</h1>
+
+    <div>
+        {% include "snippets/welcome-user-msg.html" %}
+    </div>
+
+    <div>
+        Page Visited : {{ page_visit_count}}
+    </div>
+
+    <div>
+        Percent of this page visit respect to total page visit : {{ percent_page_visit }}
+    </div>
+    
+    <div>
+        Total Page Visited : {{ total_visit_count}}
+    </div>
+{% endblock content %}

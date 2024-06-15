@@ -1,0 +1,5 @@
+{% if request.user.is_authenticated %}
+    You are a registered user
+{% else %}
+    You are not a registered user.
+{% endif %}
