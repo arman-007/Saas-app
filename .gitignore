@@ -14,7 +14,7 @@ env/
 Thumbs.db
 
 #ignore db 
-db.sqlite3
+src/db.sqlite3
 
 #vs-code workspace file
 django_saas.code-workspace
