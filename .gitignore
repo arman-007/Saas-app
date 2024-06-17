@@ -18,3 +18,10 @@ src/db.sqlite3
 
 #vs-code workspace file
 django_saas.code-workspace
+
+#ignore vendor static files
+src/staticfiles/vendors
+
+#ignore local static file root
+# or "local CDN "
+local-cdn/
