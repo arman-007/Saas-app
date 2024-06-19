@@ -5,6 +5,8 @@ from visits.models import PageVisits
 
 
 def home_page_view(request, *args, **kwargs):
+    if request.user.is_authenticated:
+        print(request.user.first_name)
     qs = PageVisits.objects.all()
     page_visit_qs = PageVisits.objects.filter(path=request.path)
     try:

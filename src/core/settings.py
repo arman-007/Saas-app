@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -152,9 +153,36 @@ STATICFILES_DIRS = [
 
 #output for python manage.py collectstatic
 STATIC_ROOT = BASE_DIR / "local-cdn"
-
+STORAGES = {
+    # ...
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#E-mail Config
+EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST=config("EMAIL_HOST", cast=str, default="smtp.gmail.com")
+EMAIL_POST=config("EMAIL_POST", cast=str, default="587")
+EMAIL_HOST_USER=config("EMAIL_HOST_USER", cast=str, default=None)
+EMAIL_HOST_PASSWORD=config("EMAIL_HOST_PASSWORD", cast=str, default=None)
+EMAIL_USE_TLS=config("EMAIL_USE_TLS", cast=bool, default=True)
+EMAIL_USE_SSL=config("EMAIL_USE_SSL", cast=bool, default=False)
+
+
+#500 errors
+ADMIN_USER_NAME=config("ADMIN_USER_NAME", default="Admin User")
+ADMIN_USER_EMAIL=config("ADMIN_USER_EMAIL", default=None)
+
+ADMINS=[]
+MANAGERS=[]
+if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
+    ADMINS += [
+        (f'{ADMIN_USER_NAME}', f'{ADMIN_USER_EMAIL}')
+    ]
+    MANAGERS=ADMINS
