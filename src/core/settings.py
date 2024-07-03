@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "commando",
     "profiles",
     "subscriptions",
+    "customers",
 ]
 
 MIDDLEWARE = [
