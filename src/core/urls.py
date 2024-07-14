@@ -32,6 +32,7 @@ urlpatterns = [
     path('', home_page_view, name='home'),
     path('accounts/', include('allauth.urls')),
     path('pricing/', subscription_views.subscription_price_view, name='pricing'),
+    path('pricing/<str:interval>/', subscription_views.subscription_price_view, name='pricing_interval'),
     path('about/', about_view),
     path('protected/', pw_protected_view),
     path('protected/user-only/', user_only_view),
